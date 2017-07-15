@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app = "http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/nav_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:navigationIcon="@drawable/back" >
+
+        <!--android:theme="@style/ThemeOverlay.Appcompat.Dark.ActionBar"-->
+
+
+        <TextView
+            android:id="@+id/per_toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:text="个人资料"
+            android:layout_gravity="center"
+            android:maxLines="1"
+            android:textSize="20sp"/>
+    </android.support.v7.widget.Toolbar>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="资料修改"
+        android:textSize="13dp"
+        android:textStyle="bold"
+        />
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/per_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="用户名称"
+        android:background="@drawable/actionsheet_single_selector"
+        />
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/per_avatar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="用户头像"
+        android:background="@drawable/actionsheet_single_selector"/>
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/per_signature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="个性签名"
+        android:background="@drawable/actionsheet_single_selector"
+        />
+
+</LinearLayout>

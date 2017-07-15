@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ic_back"
+        android:scaleType="centerCrop"/>
+    <!--   android:src="@drawable/ic_back" -->
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/OverflowMenuStyle"
+                app:navigationIcon="@drawable/ic_menu">
+
+
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#fff"
+                    android:text="小田聊天"
+                    android:layout_gravity="center"
+                    android:maxLines="1"
+                    android:textSize="25sp"/>
+
+            </android.support.v7.widget.Toolbar>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/msg_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+            </android.support.v7.widget.RecyclerView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff">
+
+                <EditText
+                    android:id="@+id/input_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/modify_edit_text"
+
+
+                    android:maxLines="3"
+                    android:layout_gravity="bottom"/>
+
+                <Button
+                    android:id="@+id/send"
+                    android:layout_width="60dp"
+                    android:layout_height="43dp"
+                    android:text="发送"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="10dp"
+
+                    android:background="@drawable/actionsheet_single_selector" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:menu="@menu/nav_menu"
+            app:headerLayout="@layout/nav_header">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom">
+                <Button
+                    android:id="@+id/settings"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="设置"
+                    android:background="@drawable/actionsheet_single_selector"/>
+
+                <Button
+                    android:id="@+id/exit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="退出"
+                    android:background="@drawable/actionsheet_single_selector"/>
+
+            </LinearLayout>
+
+
+        </android.support.design.widget.NavigationView>
+
+    </android.support.v4.widget.DrawerLayout>
+
+</FrameLayout>
+
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="180dp">
+
+    <ImageView
+        android:id="@+id/nav_back"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:background="@drawable/nav_back"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/user_icon"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/right_image"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/user_icon"
+        android:layout_marginLeft="20dp"
+        android:textColor="#fff"
+        android:textSize="35sp"
+        android:layout_marginTop="105dp"
+        android:ellipsize="end"
+        android:maxLines="1"/>
+    <TextView
+        android:id="@+id/per_sign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="#fff"
+        android:layout_toRightOf="@id/user_icon"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        />
+
+</RelativeLayout>

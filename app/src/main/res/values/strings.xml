@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">小田聊天</string>
+
+    <string-array name="welcome_tips">
+        <item>主人，小田在此恭候多时了~</item>
+        <item>在下小田，不知阁下有何赐教！</item>
+        <item>主人，陪小田说说话嘛~</item>
+        <item>近来一切可好？有什么需要帮忙吗？</item>
+        <item>小田可听话啦，快来陪我说话嘛~</item>
+        <item>有空来聊呦，我知道的可多啦~</item>
+        <item>您终于来了，小田已在此恭候多时！</item>
+        <item>感谢您的大驾光临，小田随时候命！</item>
+        <item>亲爱的，我想死你啦~</item>
+        <item>我是小田，很高兴为你服务！</item>
+    </string-array>
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/shun_kou_liu"
+        android:title="顺口溜"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/rao_kou_ling"
+        android:title="绕口令"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/xie_hou_yu"
+        android:title="歇后语"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/xiao_hua"
+        android:title="讲笑话"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/gu_shi"
+        android:title="讲故事"
+        app:showAsAction="never"/>
+
+</menu>

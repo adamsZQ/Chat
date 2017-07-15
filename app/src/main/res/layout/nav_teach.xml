@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/teach_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:text="聊天教学"
+                android:layout_gravity="center"
+                android:maxLines="1"
+                android:textSize="20sp"/>
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="请输入您的问题"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/actionsheet_single_normal"/>
+            <EditText
+                android:id="@+id/teach_edit_1"
+                android:layout_marginTop="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="start"
+                android:background="@drawable/modify_edit_text"
+
+                />
+            <TextView
+                android:text="请输入您的答案"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/actionsheet_single_normal"/>
+            <EditText
+                android:id="@+id/teach_edit_2"
+                android:layout_marginTop="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:gravity="start"
+                android:background="@drawable/modify_edit_text">
+
+            </EditText>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="16dp"
+                android:layout_gravity="end|bottom"
+                android:src="@drawable/ic_done"
+                app:elevation="6dp"
+                app:borderWidth="0dp"
+                app:rippleColor="@color/colorPrimary"
+                app:pressedTranslationZ="12dp"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+</LinearLayout>

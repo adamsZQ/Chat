@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app = "http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/nav_dress_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:navigationIcon="@drawable/back"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:text="个性装扮"
+            android:layout_gravity="center"
+            android:maxLines="1"
+            android:textSize="20sp"/>
+    </android.support.v7.widget.Toolbar>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="聊天背景"
+        android:textAlignment="center"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        />
+
+    <RelativeLayout
+        android:background="@drawable/actionsheet_single_normal"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="自动切换"
+            android:layout_centerInParent="true" />
+        <com.suke.widget.SwitchButton
+            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/back_auto_change_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/back_choose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:layout_gravity="start"
+        android:text="本地选择"
+        android:textColor="@color/black"
+        android:background="@drawable/actionsheet_single_normal"/>
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/back_set"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:layout_gravity="start"
+        android:text="系统自带"
+        android:textColor="@color/black"
+        android:background="@drawable/actionsheet_single_normal"/>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="头像背景"
+        android:textAlignment="center"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        />
+
+    <RelativeLayout
+        android:background="@drawable/actionsheet_single_normal"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="自动切换"
+            android:layout_centerInParent="true" />
+        <com.suke.widget.SwitchButton
+            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/head_auto_change_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/head_choose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:layout_gravity="start"
+        android:text="本地选择"
+        android:textColor="@color/black"
+        android:background="@drawable/actionsheet_single_normal"/>
+    </LinearLayout>
