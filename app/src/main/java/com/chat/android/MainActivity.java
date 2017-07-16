@@ -1,10 +1,13 @@
 package com.chat.android;
 
 
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,15 +21,20 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bilibili.magicasakura.utils.ThemeUtils;
 import com.bumptech.glide.Glide;
 import com.chat.android.Adapter.MsgAdapter;
 import com.chat.android.Dialog.AlertDialog;
+import com.chat.android.Theme.CardPickerDialog;
+import com.chat.android.Theme.ThemeHelper;
 import com.chat.android.db.Msg;
 import com.chat.android.util.Address;
 import com.chat.android.util.HttpUtil;
@@ -47,7 +55,7 @@ import okhttp3.Response;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CardPickerDialog.ClickListener{
 
     private DrawerLayout drawerLayout;
     private List<Msg> msgList = new ArrayList<>();
@@ -122,7 +130,10 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent3);
                         break;
                     case R.id.nav_theme:
-                        Toast.makeText(MainActivity.this, "等待小田的更新哦！", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(MainActivity.this, "等待小田的更新哦！", Toast.LENGTH_SHORT).show();
+                        CardPickerDialog dialog = new CardPickerDialog();
+                        dialog.setClickListener(MainActivity.this);
+                        dialog.show(getSupportFragmentManager(), CardPickerDialog.TAG);
                         break;
                     case R.id.nav_tools:
                         Intent intent5 = new Intent(MainActivity.this,Nav_tools_Activity.class);
@@ -182,6 +193,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= 21) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(ThemeUtils.getColorById(this, R.color.colorPrimaryDark));
+            ActivityManager.TaskDescription description = new ActivityManager.TaskDescription(null, null, ThemeUtils.getThemeAttrColor(this, android.R.attr.colorPrimary));
+            setTaskDescription(description);
+        }
+    }
+
+    @Override
     protected void onRestart() {
         super.onRestart();
         //背景图片的加载
@@ -197,6 +221,7 @@ public class MainActivity extends AppCompatActivity {
 //
 //        }
     }
+    
     @Override
     protected void onStart() {
         super.onStart();
@@ -451,6 +476,13 @@ public class MainActivity extends AppCompatActivity {
                         }
                     })
                     .show();
+        }
+    }
+
+    @Override
+    public void onConfirm(int currentTheme) {
+        if (ThemeHelper.getTheme(MainActivity.this) != currentTheme) {
+            ThemeHelper.setTheme(MainActivity.this, currentTheme);
         }
     }
 }
