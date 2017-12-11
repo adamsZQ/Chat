@@ -41,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
-                    android:text="小田聊天"
+                    android:text="@string/app_name"
                     android:layout_gravity="center"
                     android:maxLines="1"
                     android:textSize="25sp"/>

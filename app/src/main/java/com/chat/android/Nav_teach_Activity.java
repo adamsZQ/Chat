@@ -9,12 +9,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import static com.chat.android.MainActivity.editor;
+import static com.chat.android.MainActivity.pref;
+
 public class Nav_teach_Activity extends AppCompatActivity {
 
     private EditText teach_edit_1;
     private EditText teach_edit_2;
     private String content1;
     private String content2;
+    private static int count;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +27,8 @@ public class Nav_teach_Activity extends AppCompatActivity {
         teach_edit_1 = (EditText)findViewById(R.id.teach_edit_1);
         teach_edit_2 = (EditText)findViewById(R.id.teach_edit_2); 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        
+        count = pref.getInt("teachCount",0);
+
         //标题栏
         Toolbar toolbar = (Toolbar) findViewById(R.id.teach_toolbar);
         setSupportActionBar(toolbar);
@@ -45,6 +50,12 @@ public class Nav_teach_Activity extends AppCompatActivity {
                 content1 = teach_edit_1.getText().toString();
                 content2 = teach_edit_2.getText().toString();
                 if((!"".equals(content1)) &&(!"".equals(content2)) ){
+
+                    count ++;
+                    editor.putString("teachRecord_question"+count,content1);
+                    editor.putString("teachRecord_answer"+count,content2);
+                    editor.putInt("teachCount",count);
+                    editor.apply();
                     Toast.makeText(Nav_teach_Activity.this, "教学成功,小田会努力的~", Toast.LENGTH_SHORT).show();
 
                 } else if((!"".equals(content1))&&("".equals(content2))){

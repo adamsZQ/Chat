@@ -39,6 +39,7 @@ import com.chat.android.db.Msg;
 import com.chat.android.util.Address;
 import com.chat.android.util.HttpUtil;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -77,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements CardPickerDialog.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         //初始化
         initMsg();
         send = (Button) findViewById(R.id.send);
@@ -91,6 +94,9 @@ public class MainActivity extends AppCompatActivity implements CardPickerDialog.
         pref = getSharedPreferences("data",MODE_PRIVATE);
         editor = pref.edit();
         back_image = (ImageView)findViewById(R.id.ic_back);
+        editor.putInt("per_set_avatar",R.drawable.right_image);
+        editor.putInt("system_set_avatar",R.drawable.left_image);
+        editor.apply();
 
         //标题栏
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -105,11 +111,9 @@ public class MainActivity extends AppCompatActivity implements CardPickerDialog.
         }
         //滑动菜单中的监听
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
-
-//          MenuItem preMenuItem;
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//
+                                                                                                                                                                                                                                                                                                //
 //                if(preMenuItem!=null){
 //                    preMenuItem.setChecked(false);
 //                }
@@ -183,7 +187,9 @@ public class MainActivity extends AppCompatActivity implements CardPickerDialog.
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "亲，等着更新哦～" , Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "亲，等着更新哦～" , Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -293,6 +299,14 @@ public class MainActivity extends AppCompatActivity implements CardPickerDialog.
         final CircleImageView user_portrait  = (CircleImageView) nav_header_view.findViewById(R.id.user_icon);
         final ImageView nav_back  = (ImageView)nav_header_view.findViewById(R.id.nav_back);
 
+        user_portrait.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,Nav_per_Activity.class);
+                startActivity(intent);
+
+            }
+        });
         //头像背景的加载
         final String headTPPic = pref.getString("head_tp_pic",null);
         final String headPic = pref.getString("head_auto_pic",null);
@@ -341,12 +355,21 @@ public class MainActivity extends AppCompatActivity implements CardPickerDialog.
         }
 
         //用户头像的加载
+
+        final int per_set_avatar = pref.getInt("per_set_avatar",0);
         final String per_avatar = pref.getString("per_avatar_pic",null);
         if(per_avatar != null){
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     Glide.with(MainActivity.this).load(per_avatar).into(user_portrait);
+                }
+            });
+        }else{
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Glide.with(MainActivity.this).load(per_set_avatar).into(user_portrait);
                 }
             });
         }
@@ -421,16 +444,18 @@ public class MainActivity extends AppCompatActivity implements CardPickerDialog.
                             if(!TextUtils.isEmpty(responseText)){
                                 try{
                                     JSONObject chatObject = new JSONObject(responseText);
-                                    Msg msg = new Msg(chatObject.getString("text"),Msg.TYPE_RECEIVED,getTime());
+                                    JSONArray jsonArray = chatObject.getJSONArray("response");
+                                    Msg msg = new Msg(jsonArray.getJSONObject(0).getString("answer"),Msg.TYPE_RECEIVED,getTime());
+
                                     msgList.add(msg);
                                     adapter.notifyItemInserted(msgList.size()-1);
                                     msgRecyclerView.scrollToPosition(msgList.size()-1);
-                                    if(!"".equals(chatObject.getString("url"))){
-                                        Msg msgUrl = new Msg(chatObject.getString("url"),Msg.TYPE_RECEIVED,getTime());
-                                        msgList.add(msgUrl);
-                                        adapter.notifyItemInserted(msgList.size()-1);
-                                        msgRecyclerView.scrollToPosition(msgList.size()-1);
-                                    }
+//                                    if(!"".equals(chatObject.getString("url"))){
+//                                        Msg msgUrl = new Msg(chatObject.getString("url"),Msg.TYPE_RECEIVED,getTime());
+//                                        msgList.add(msgUrl);
+//                                        adapter.notifyItemInserted(msgList.size()-1);
+//                                        msgRecyclerView.scrollToPosition(msgList.size()-1);
+//                                    }
                                 }catch (JSONException e){
                                     e.printStackTrace();
                                 }
@@ -484,5 +509,13 @@ public class MainActivity extends AppCompatActivity implements CardPickerDialog.
         if (ThemeHelper.getTheme(MainActivity.this) != currentTheme) {
             ThemeHelper.setTheme(MainActivity.this, currentTheme);
         }
+        new AlertDialog(MainActivity.this).builder().setTitle("致歉")
+                .setMsg("由于作者水平有限，主题颜色更换效果需重新启动应用方可见，且并非全局更换，为此带来的不便，敬请谅解！")
+                .setPositiveButton("确定", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                }).show();
     }
 }

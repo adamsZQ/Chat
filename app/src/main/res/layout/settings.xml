@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/settings_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:navigationIcon="@drawable/back">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="设置"
+            android:layout_gravity="center"
+            android:maxLines="1"
+            android:textSize="20sp"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="本地记录"
+        android:textAlignment="center"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        />
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/teach_record"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="教学记录"
+        android:background="@drawable/actionsheet_single_normal"
+        android:textAlignment="textStart"
+        android:layout_gravity="start" />
+    <!--<Button-->
+        <!--android:id="@+id/feedback_record"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="反馈记录"-->
+        <!--android:background="@drawable/actionsheet_middle_selector"-->
+        <!--android:layout_gravity="start"-->
+        <!--android:textAlignment="textStart"/>-->
+
+    <Button
+        android:id="@+id/chat_record"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="清空聊天记录"
+        android:layout_marginTop="10dp"
+        android:textAlignment="textStart"
+        android:layout_gravity="start"
+        android:background="@drawable/actionsheet_single_normal"/>
+
+
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="系统设置"
+        android:textAlignment="center"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:id="@+id/system_avatar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="头像选择"
+        android:layout_marginTop="5dp"
+        android:textAlignment="textStart"
+        android:layout_gravity="start"
+        android:background="@drawable/actionsheet_single_normal"/>
+
+    <!--<LinearLayout-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:background="@drawable/actionsheet_single_normal">-->
+
+        <!--<Button-->
+            <!--android:id="@+id/version_update"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textAlignment="textStart"-->
+            <!--android:layout_gravity="start"-->
+            <!--android:text="版本更新"-->
+            <!--android:background="@color/trans"-->
+            <!--/>-->
+
+        <!--<TextView-->
+
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:text="已最新"-->
+            <!--android:textSize="@dimen/textsize_small"-->
+            <!--android:background="@drawable/actionsheet_single_normal"/>-->
+
+    <!--</LinearLayout>-->
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:id="@+id/version_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:layout_gravity="start"
+        android:text="版本更新"
+        android:background="@drawable/actionsheet_single_normal"
+        />
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:id="@+id/system_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:layout_gravity="start"
+        android:text="关于系统"
+        android:background="@drawable/actionsheet_single_selector"/>
+</LinearLayout>

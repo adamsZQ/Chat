@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name="com.chat.android.MyApplication"
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/app"
         android:label="@string/app_name"
@@ -42,7 +42,10 @@
             android:name=".per_modify_Activity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".BackImageActivity" />
-        <activity android:name=".Nav_tools_Activity"></activity>
+        <activity android:name=".Nav_tools_Activity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".System_about_Activity" />
+        <activity android:name=".teach_Record_Activity"></activity>
     </application>
 
 </manifest>

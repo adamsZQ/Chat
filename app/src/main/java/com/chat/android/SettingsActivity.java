@@ -6,8 +6,6 @@ import android.content.ContentUris;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.DocumentsContract;
@@ -32,23 +30,30 @@ import java.io.IOException;
 
 import static com.chat.android.MainActivity.editor;
 
-public class Nav_per_Activity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
-    private Uri imageUri;
+
+    private Button teach_record;
+    private Button chat_clean;
+    private Button system_avatar;
+    private Button system_about;
+    private Button version_update;
+    private  Uri imageUri;
     private static final int TAKE_PHOTO = 1;
     private static final int CHOOSE_PHOTO = 2;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nav_person_layout);
+        setContentView(R.layout.settings);
 
-        //标题栏
-        Toolbar toolbar = (Toolbar) findViewById(R.id.nav_toolbar);
+        teach_record = (Button) findViewById(R.id.teach_record);
+        chat_clean = (Button) findViewById(R.id.chat_record);
+        system_avatar = (Button) findViewById(R.id.system_avatar);
+        system_about = (Button) findViewById(R.id.system_about);
+        version_update = (Button) findViewById(R.id.version_update);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.settings_toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
@@ -62,23 +67,31 @@ public class Nav_per_Activity extends AppCompatActivity {
             }
         });
 
-        Button per_name  = (Button) findViewById(R.id.per_name);
-        Button per_avatar  = (Button) findViewById(R.id.per_avatar);
-        Button per_signature = (Button) findViewById(R.id.per_signature);
-
-        per_name.setOnClickListener(new View.OnClickListener() {
+        //聊天记录清空按钮
+        chat_clean.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Intent intent = new Intent(Nav_per_Activity.this,per_modify_Activity.class);
-                intent.putExtra("diff","1");
-                startActivity(intent);
+                new AlertDialog(SettingsActivity.this).builder().setTitle("提示")
+                        .setMsg("您将会清空所有聊天记录，确定继续吗？")
+                        .setPositiveButton("确定", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Toast.makeText(SettingsActivity.this, "小田以人格担保，已不占用您任何内存~", Toast.LENGTH_LONG).show();
+                            }
+                        }).
+                        setNegativeButton("取消", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                            }
+                        }).show();
             }
         });
-
-        per_avatar.setOnClickListener(new View.OnClickListener() {
+        //系统头像选择
+        system_avatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new ActionSheetDialog(Nav_per_Activity.this)
+                new ActionSheetDialog(SettingsActivity.this)
                         .builder()
                         .setCancelable(true)
                         .setCanceledOnTouchOutside(true)
@@ -86,31 +99,32 @@ public class Nav_per_Activity extends AppCompatActivity {
                                 new ActionSheetDialog.OnSheetItemClickListener() {
                                     @Override
                                     public void onClick(int which) {
-                                    takePhoto("per_avatar.jpg");
+                                        takePhoto("system_avatar.jpg");
                                     }
                                 })
                         .addSheetItem("从相册选择", ActionSheetDialog.SheetItemColor.Blue,
                                 new ActionSheetDialog.OnSheetItemClickListener() {
                                     @Override
                                     public void onClick(int which) {
-                                        if(ContextCompat.checkSelfPermission(Nav_per_Activity.this,
+                                        if(ContextCompat.checkSelfPermission(SettingsActivity.this,
                                                 Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-                                            ActivityCompat.requestPermissions(Nav_per_Activity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
+                                            ActivityCompat.requestPermissions(SettingsActivity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
                                         }else{
                                             openAlbum();
                                         }
                                     }
                                 })
-                        .addSheetItem("恢复系统默认",ActionSheetDialog.SheetItemColor.Blue, new ActionSheetDialog.OnSheetItemClickListener(){
+                        .addSheetItem("恢复系统默认",ActionSheetDialog.SheetItemColor.Blue,
+                                new ActionSheetDialog.OnSheetItemClickListener(){
                                     @Override
                                     public void onClick(int which) {
-                                        new AlertDialog(Nav_per_Activity.this).builder().setMsg("您确定使用系统默认头像吗？")
+                                        new AlertDialog(SettingsActivity.this).builder().setMsg("您确定使用系统默认头像吗？")
                                                 .setPositiveButton("确定", new View.OnClickListener() {
                                                     @Override
                                                     public void onClick(View v) {
-                                                        editor.putString("per_avatar_pic",null);
+                                                        editor.putString("system_avatar_pic",null);
                                                         editor.apply();
-                                                        Toast.makeText(Nav_per_Activity.this, "恢复成功", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(SettingsActivity.this, "恢复成功", Toast.LENGTH_SHORT).show();
                                                     }
                                                 })
                                                 .setNegativeButton("取消", new View.OnClickListener() {
@@ -125,18 +139,37 @@ public class Nav_per_Activity extends AppCompatActivity {
 
             }
         });
-
-
-
-
-        per_signature.setOnClickListener(new View.OnClickListener() {
+        //
+        system_about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent intent = new Intent(Nav_per_Activity.this,per_modify_Activity.class);
-               intent.putExtra("diff","2");
-               startActivity(intent);
-              }
+                Intent intent = new Intent(SettingsActivity.this,System_about_Activity.class);
+                startActivity(intent);
+            }
         });
+
+        version_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog(SettingsActivity.this).builder().setTitle("恭喜")
+                        .setMsg("热烈祝贺，您当前已在体验最新版本哦！后续更新，敬请期待~")
+                        .setPositiveButton("确定", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                            }
+                        }).show();
+            }
+        });
+
+        teach_record.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingsActivity.this,teach_Record_Activity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     //拍照功能
@@ -151,7 +184,8 @@ public class Nav_per_Activity extends AppCompatActivity {
             e.printStackTrace();
         }
         if (Build.VERSION.SDK_INT >= 24) {
-            imageUri = FileProvider.getUriForFile(Nav_per_Activity.this,
+            imageUri = FileProvider.getUriForFile(SettingsActivity.this,
+
                     "com.chat.android.fileprovider", photo);
         } else {
             imageUri = Uri.fromFile(photo);
@@ -168,24 +202,24 @@ public class Nav_per_Activity extends AppCompatActivity {
         switch(requestCode){
             case TAKE_PHOTO:
                 if(resultCode == RESULT_OK){
-                    editor.putString("per_avatar_pic",imageUri.toString());
+                    editor.putString("system_avatar_pic",imageUri.toString());
                     editor.apply();
                     Toast.makeText(this, "修改成功！", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case CHOOSE_PHOTO:
 
-                    if (resultCode == RESULT_OK) {
-                        // 判断手机系统版本号
-                        if (Build.VERSION.SDK_INT >= 19) {
-                            // 4.4及以上系统使用这个方法处理图片
-                            handleImageOnKitKat(data);
-                        } else {
-                            // 4.4以下系统使用这个方法处理图片
-                            handleImageBeforeKitKat(data);
-                        }
+                if (resultCode == RESULT_OK) {
+                    // 判断手机系统版本号
+                    if (Build.VERSION.SDK_INT >= 19) {
+                        // 4.4及以上系统使用这个方法处理图片
+                        handleImageOnKitKat(data);
+                    } else {
+                        // 4.4以下系统使用这个方法处理图片
+                        handleImageBeforeKitKat(data);
                     }
-                    break;
+                }
+                break;
             default:break;
         }
     }
@@ -258,13 +292,12 @@ public class Nav_per_Activity extends AppCompatActivity {
 
     private void displayImage(String imagePath) {
         if (imagePath != null) {
-            editor.putString("per_avatar_pic",imagePath);
+            editor.putString("system_avatar_pic",imagePath);
             editor.apply();
             Toast.makeText(this, "修改成功！", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "获取图片失败！", Toast.LENGTH_SHORT).show();
         }
     }
-
 
 }

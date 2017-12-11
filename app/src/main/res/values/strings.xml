@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">小田聊天</string>
+    <string name="app_name">聊天机器人</string>
 
     <string-array name="welcome_tips">
         <item>主人，小田在此恭候多时了~</item>
@@ -11,6 +11,14 @@
         <item>您终于来了，小田已在此恭候多时！</item>
         <item>感谢您的大驾光临，小田随时候命！</item>
         <item>亲爱的，我想死你啦~</item>
-        <item>我是小田，很高兴为你服务！</item>
+        <item>您好，我是小田，很高兴为你服务！</item>
+        <item>您若安好，便是晴天！小田在此祝您万事如意！</item>
     </string-array>
+
+    <string name="system_about1">* 该产品纯良心打造，无广告，无收费，无上瘾，欢迎积极投诉哦！</string>
+    <string name="system_about4">* 我们在此郑重承诺，本产品暂系三无产品，请谨慎使用！一切后果将由您个人承担！！</string>
+    <string name="system_about2">* 该产品仅供体制内成员交流使用，未经允许，不得擅自进行传播！</string>
+    <string name="system_about3">* 请注意，一旦发现任何侵权行为，您将会受到最为严厉的道德制裁！</string>
+
+    <string name="system_about5">Copyright © 2017, Xiaotian. All rights reserved.</string>
 </resources>

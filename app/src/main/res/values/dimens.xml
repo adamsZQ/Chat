@@ -6,6 +6,7 @@
     <dimen name="padding">16dp</dimen>
     <dimen name="padding_half">8dp</dimen>
 
+    <dimen name="textsize_title">20sp</dimen>
     <dimen name="textsize_large">18sp</dimen>
     <dimen name="textsize_normal">16sp</dimen>
     <dimen name="textsize_small">14sp</dimen>
