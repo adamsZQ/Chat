@@ -133,20 +133,20 @@ public class MainActivity extends AppCompatActivity implements CardPickerDialog.
                         Intent intent3 = new Intent(MainActivity.this,Nav_teach_Activity.class);
                         startActivity(intent3);
                         break;
-                    case R.id.nav_theme:
-//                        Toast.makeText(MainActivity.this, "等待小田的更新哦！", Toast.LENGTH_SHORT).show();
-                        CardPickerDialog dialog = new CardPickerDialog();
-                        dialog.setClickListener(MainActivity.this);
-                        dialog.show(getSupportFragmentManager(), CardPickerDialog.TAG);
-                        break;
-                    case R.id.nav_tools:
-                        Intent intent5 = new Intent(MainActivity.this,Nav_tools_Activity.class);
-                        startActivityForResult(intent5,1);
-                        break;
-                    case R.id.nav_feedback:
-                        Intent intent6 = new Intent(MainActivity.this,Nav_feedback_Activity.class);
-                        startActivity(intent6);
-                        break;
+//                    case R.id.nav_theme:
+////                        Toast.makeText(MainActivity.this, "等待小田的更新哦！", Toast.LENGTH_SHORT).show();
+//                        CardPickerDialog dialog = new CardPickerDialog();
+//                        dialog.setClickListener(MainActivity.this);
+//                        dialog.show(getSupportFragmentManager(), CardPickerDialog.TAG);
+//                        break;
+//                    case R.id.nav_tools:
+//                        Intent intent5 = new Intent(MainActivity.this,Nav_tools_Activity.class);
+//                        startActivityForResult(intent5,1);
+//                        break;
+//                    case R.id.nav_feedback:
+//                        Intent intent6 = new Intent(MainActivity.this,Nav_feedback_Activity.class);
+//                        startActivity(intent6);
+//                        break;
                     default:break;
                 }
                 drawerLayout.closeDrawers();
@@ -184,14 +184,14 @@ public class MainActivity extends AppCompatActivity implements CardPickerDialog.
         });
 
 
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Toast.makeText(MainActivity.this, "亲，等着更新哦～" , Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
-                startActivity(intent);
-            }
-        });
+//        settings.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Toast.makeText(MainActivity.this, "亲，等着更新哦～" , Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         //背景图片的加载
         load_back_pic();
@@ -265,22 +265,22 @@ public class MainActivity extends AppCompatActivity implements CardPickerDialog.
                 modifyData();
                 drawerLayout.openDrawer(GravityCompat.START);
                 break;
-            case R.id.shun_kou_liu:
-                content = "说个顺口溜呗～";
-                chat();
-                break;
-            case R.id.xie_hou_yu:
-                content = "来句歇后语～";
-                chat();
-                break;
-            case R.id.rao_kou_ling:
-                content = "来，说句绕口令";
-                chat();
-                break;
-            case R.id.xiao_hua:
-                content = "讲个笑话让乐乐呗";
-                chat();
-                break;
+//            case R.id.shun_kou_liu:
+//                content = "说个顺口溜呗～";
+//                chat();
+//                break;
+//            case R.id.xie_hou_yu:
+//                content = "来句歇后语～";
+//                chat();
+//                break;
+//            case R.id.rao_kou_ling:
+//                content = "来，说句绕口令";
+//                chat();
+//                break;
+//            case R.id.xiao_hua:
+//                content = "讲个笑话让乐乐呗";
+//                chat();
+//                break;
             case R.id.gu_shi:
                 content = "讲个小故事呀";
                 chat();
